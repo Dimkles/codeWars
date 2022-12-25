@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.rps = exports.findNeedle = exports.Kata = exports.simpleMultiplication = exports.abbrevName = exports.makeNegative = exports.areYouPlayingBanjo = exports.boolToWord = exports.numberToString = exports.countSheep = exports.zeroFuel = exports.fakeBin = void 0;
+exports.descendingOrder = exports.smash = exports.points = exports.longest = exports.number = exports.rps = exports.findNeedle = exports.Kata = exports.simpleMultiplication = exports.abbrevName = exports.makeNegative = exports.areYouPlayingBanjo = exports.boolToWord = exports.numberToString = exports.countSheep = exports.zeroFuel = exports.fakeBin = void 0;
 function positiveSum(arr) {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -147,4 +147,44 @@ exports.rps = rps;
 const squareDigits = (num) => {
     return +num.toString().split('').map((item) => (+item) ** 2).join('');
 };
-squareDigits(9119);
+function number(busStops) {
+    let passengers = 0;
+    busStops.forEach((item) => {
+        passengers += item[0];
+        passengers -= item[1];
+    });
+    return passengers;
+}
+exports.number = number;
+const longest = (s1, s2) => {
+    let unique = [...new Set(s1 + s2)];
+    unique.sort((a, b) => a.localeCompare(b));
+    const result = unique.join('');
+    return result;
+};
+exports.longest = longest;
+function points(games) {
+    let points = 0;
+    games.forEach((item) => {
+        points += item[0] > item[2] ? 3 : item[0] === item[2] ? 1 : 0;
+    });
+    return points;
+}
+exports.points = points;
+// points(["1:1","2:2","3:3","4:4","2:2","3:3","4:4","3:3","4:4","4:4"]) 10
+function smash(words) {
+    return words.join(' ');
+}
+exports.smash = smash;
+;
+// ['hello', 'world', 'this', 'is', 'great']  =>  'hello world this is great'
+function descendingOrder(n) {
+    return +n.toString()
+        .split('')
+        .sort((a, b) => +b - +a)
+        .join('');
+}
+exports.descendingOrder = descendingOrder;
+// Input: 42145 Output: 54421
+// Input: 145263 Output: 654321
+// Input: 123456789 Output: 987654321

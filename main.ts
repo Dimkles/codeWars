@@ -157,8 +157,88 @@ export function rps(p1: string, p2: string): string {
 }
 
 
-
-
 const squareDigits = (num: number): number => {
     return +num.toString().split('').map((item) => (+item) ** 2).join('')
 }
+
+
+export function number(busStops: [number, number][]): number {
+    let passengers = 0
+    busStops.forEach((item) => {
+        passengers += item[0]
+        passengers -= item[1]
+    })
+    return passengers
+}
+
+export const longest = (s1: string, s2: string): string => {
+    let unique = [...new Set(s1 + s2)]
+    unique.sort((a, b) => a.localeCompare(b))
+    const result = unique.join('')
+    return result
+}
+
+
+export function points(games: string[]): number {
+
+    let points = 0
+
+    games.forEach((item) => {
+        points += item[0] > item[2] ? 3 : item[0] === item[2] ? 1 : 0
+    })
+
+    return points
+}
+// points(["1:1","2:2","3:3","4:4","2:2","3:3","4:4","3:3","4:4","4:4"]) 10
+
+
+
+export function smash(words: string[]): string {
+    return words.join(' ')
+};
+// ['hello', 'world', 'this', 'is', 'great']  =>  'hello world this is great'
+
+
+
+export function descendingOrder(n: number): number {
+    return +n.toString()
+        .split('')
+        .sort((a, b) => +b - +a)
+        .join('')
+}
+// Input: 42145 Output: 54421
+// Input: 145263 Output: 654321
+// Input: 123456789 Output: 987654321
+
+
+export const min = (list: number[]): number => {
+    return Math.min(...list)
+};
+
+export const max = (list: number[]): number => {
+    return Math.max(...list)
+};
+// * [4,6,2,1,9,63,-134,566]         -> max = 566, min = -134
+// * [-52, 56, 30, 29, -54, 0, -110] -> min = -110, max = 56
+// * [42, 54, 65, 87, 0]             -> min = 0, max = 87
+// * [5]                             -> min = 5, max = 5
+
+export function findShort(s: string): number {
+    const arr = s.split(' ')
+    let min = arr[0].length
+    arr.forEach((item) => {
+        if (item.length < min) min = item.length
+    })
+
+    return min; // your code here
+}
+
+// findShort("Lets all go on holiday somewhere very cold") -> 2
+
+
+export const digitize = (n: number): number[] => {
+    return n.toString().split('').reverse().map((i) => +i)
+};
+
+// 35231 => [1,3,2,5,3]
+// 0 => [0]
