@@ -113,3 +113,52 @@ export class Kata {
         return `${max} ${min}`
     }
 }
+
+
+export function findNeedle(haystack: any[]): string {
+    return haystack.indexOf('needle').toString()
+}
+
+
+export function rps(p1: string, p2: string): string {
+
+    const paper = 'paper'
+    const rock = 'rock'
+    const scissors = 'scissors'
+
+    switch (p1) {
+        case paper:
+            switch (p2) {
+                case rock:
+                    return "Player 1 won!"
+                case scissors:
+                    return "Player 2 won!"
+            }
+            break
+        case scissors:
+            switch (p2) {
+                case paper:
+                    return "Player 1 won!"
+                case rock:
+                    return "Player 2 won!"
+            }
+            break
+        case rock:
+            switch (p2) {
+                case scissors:
+                    return "Player 1 won!"
+                case paper:
+                    return "Player 2 won!"
+            }
+            break
+    }
+
+    return "Draw!"
+}
+
+
+
+
+const squareDigits = (num: number): number => {
+    return +num.toString().split('').map((item) => (+item) ** 2).join('')
+}
